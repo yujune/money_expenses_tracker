@@ -4,17 +4,25 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'currency_repository.g.dart';
 
 enum Currency {
-  USD,
-  EUR,
-  GBP,
-  JPY,
-  INR,
-  AUD,
-  CAD,
-  CNY,
-  CHF,
-  SEK,
-  MYR,
+  USD(locale: 'en_US'),
+  EUR(locale: 'en_DE'),
+  GBP(locale: 'en_GB'),
+  JPY(locale: 'en_JP'),
+  INR(locale: 'en_IN'),
+  AUD(locale: 'en_AU'),
+  CAD(locale: 'en_CA'),
+  CNY(locale: 'en_CN'),
+  CHF(locale: 'en_CH'),
+  SEK(locale: 'en_SE'),
+  MYR(locale: 'en_MY');
+
+  final String locale;
+
+  const Currency({required this.locale});
+
+  static Currency fromName(String name) {
+    return Currency.values.firstWhere((e) => e.name == name);
+  }
 }
 
 abstract class ICurrencyRepository {

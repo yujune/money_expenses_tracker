@@ -83,7 +83,8 @@ class CategorisedExpensesPieChart extends StatelessWidget {
                     ],
                   ),
                   trailing: Text(
-                    '\$${e.amount.toStringAsFixed(2)}',
+                    NumberFormat.simpleCurrency(locale: 'en_MY')
+                        .format(e.amount),
                   ),
                 );
               },

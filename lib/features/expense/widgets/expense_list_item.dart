@@ -30,7 +30,9 @@ class ExpenseListItem extends StatelessWidget {
             const Icon(Icons.attach_money),
             Expanded(
               child: Text(
-                '${expense.amount} ${expense.currency}',
+                NumberFormat.currency(
+                  symbol: expense.currency,
+                ).format(expense.amount),
                 style: context.textTheme.titleLarge,
               ),
             ),

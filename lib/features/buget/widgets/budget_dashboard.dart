@@ -60,7 +60,7 @@ class BudgetDashboard extends StatelessWidget {
   }
 
   String _formatCurrency(double amount) {
-    return '\$${amount.toStringAsFixed(2)}';
+    return NumberFormat.simpleCurrency(locale: 'en_MY').format(amount);
   }
 
   String _getCurrentMonthYear() {
@@ -161,42 +161,47 @@ class BudgetDashboard extends StatelessWidget {
             const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Budget',
-                      style: context.textTheme.bodyMedium?.copyWith(
-                        color: Colors.white.withValues(alpha: .8),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Budget',
+                        style: context.textTheme.bodyMedium?.copyWith(
+                          color: Colors.white.withValues(alpha: .8),
+                        ),
                       ),
-                    ),
-                    Text(
-                      _formatCurrency(budget!.amount),
-                      style: context.textTheme.bodyLarge?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
+                      Text(
+                        _formatCurrency(budget!.amount),
+                        style: context.textTheme.bodyLarge?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Spent',
-                      style: context.theme.textTheme.bodyMedium?.copyWith(
-                        color: Colors.white.withValues(alpha: .8),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Spent',
+                        style: context.theme.textTheme.bodyMedium?.copyWith(
+                          color: Colors.white.withValues(alpha: .8),
+                        ),
                       ),
-                    ),
-                    Text(
-                      _formatCurrency(budget!.totalSpent),
-                      style: context.theme.textTheme.bodyLarge?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
+                      Text(
+                        _formatCurrency(budget!.totalSpent),
+                        style: context.theme.textTheme.bodyLarge?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
