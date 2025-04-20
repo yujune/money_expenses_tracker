@@ -7,12 +7,12 @@ part of 'pie_chart_data_provider.dart';
 // **************************************************************************
 
 String _$totalExpensesByCategoryHash() =>
-    r'2c77e6966a5787542d9da6cb5ee634194377bd78';
+    r'f2b2d1304978cb5dcd7e66c9a3ba75389bd8a1ae';
 
 /// See also [TotalExpensesByCategory].
 @ProviderFor(TotalExpensesByCategory)
 final totalExpensesByCategoryProvider = AutoDisposeAsyncNotifierProvider<
-    TotalExpensesByCategory, List<TotalExpensesByCategoryModel>>.internal(
+    TotalExpensesByCategory, TotalCategoryExpensesModel>.internal(
   TotalExpensesByCategory.new,
   name: r'totalExpensesByCategoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -23,6 +23,6 @@ final totalExpensesByCategoryProvider = AutoDisposeAsyncNotifierProvider<
 );
 
 typedef _$TotalExpensesByCategory
-    = AutoDisposeAsyncNotifier<List<TotalExpensesByCategoryModel>>;
+    = AutoDisposeAsyncNotifier<TotalCategoryExpensesModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -14,24 +14,23 @@ part of 'pie_chart_data_provider.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$TotalExpensesByCategoryModel {
+mixin _$CategoryExpenseModel {
   String get category;
   double get amount;
 
-  /// Create a copy of TotalExpensesByCategoryModel
+  /// Create a copy of CategoryExpenseModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $TotalExpensesByCategoryModelCopyWith<TotalExpensesByCategoryModel>
-      get copyWith => _$TotalExpensesByCategoryModelCopyWithImpl<
-              TotalExpensesByCategoryModel>(
-          this as TotalExpensesByCategoryModel, _$identity);
+  $CategoryExpenseModelCopyWith<CategoryExpenseModel> get copyWith =>
+      _$CategoryExpenseModelCopyWithImpl<CategoryExpenseModel>(
+          this as CategoryExpenseModel, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is TotalExpensesByCategoryModel &&
+            other is CategoryExpenseModel &&
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.amount, amount) || other.amount == amount));
@@ -42,29 +41,28 @@ mixin _$TotalExpensesByCategoryModel {
 
   @override
   String toString() {
-    return 'TotalExpensesByCategoryModel(category: $category, amount: $amount)';
+    return 'CategoryExpenseModel(category: $category, amount: $amount)';
   }
 }
 
 /// @nodoc
-abstract mixin class $TotalExpensesByCategoryModelCopyWith<$Res> {
-  factory $TotalExpensesByCategoryModelCopyWith(
-          TotalExpensesByCategoryModel value,
-          $Res Function(TotalExpensesByCategoryModel) _then) =
-      _$TotalExpensesByCategoryModelCopyWithImpl;
+abstract mixin class $CategoryExpenseModelCopyWith<$Res> {
+  factory $CategoryExpenseModelCopyWith(CategoryExpenseModel value,
+          $Res Function(CategoryExpenseModel) _then) =
+      _$CategoryExpenseModelCopyWithImpl;
   @useResult
   $Res call({String category, double amount});
 }
 
 /// @nodoc
-class _$TotalExpensesByCategoryModelCopyWithImpl<$Res>
-    implements $TotalExpensesByCategoryModelCopyWith<$Res> {
-  _$TotalExpensesByCategoryModelCopyWithImpl(this._self, this._then);
+class _$CategoryExpenseModelCopyWithImpl<$Res>
+    implements $CategoryExpenseModelCopyWith<$Res> {
+  _$CategoryExpenseModelCopyWithImpl(this._self, this._then);
 
-  final TotalExpensesByCategoryModel _self;
-  final $Res Function(TotalExpensesByCategoryModel) _then;
+  final CategoryExpenseModel _self;
+  final $Res Function(CategoryExpenseModel) _then;
 
-  /// Create a copy of TotalExpensesByCategoryModel
+  /// Create a copy of CategoryExpenseModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -87,29 +85,28 @@ class _$TotalExpensesByCategoryModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _TotalExpensesByCategoryModel implements TotalExpensesByCategoryModel {
-  const _TotalExpensesByCategoryModel(
-      {required this.category, required this.amount});
+class _CategoryExpenseModel implements CategoryExpenseModel {
+  const _CategoryExpenseModel({required this.category, required this.amount});
 
   @override
   final String category;
   @override
   final double amount;
 
-  /// Create a copy of TotalExpensesByCategoryModel
+  /// Create a copy of CategoryExpenseModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$TotalExpensesByCategoryModelCopyWith<_TotalExpensesByCategoryModel>
-      get copyWith => __$TotalExpensesByCategoryModelCopyWithImpl<
-          _TotalExpensesByCategoryModel>(this, _$identity);
+  _$CategoryExpenseModelCopyWith<_CategoryExpenseModel> get copyWith =>
+      __$CategoryExpenseModelCopyWithImpl<_CategoryExpenseModel>(
+          this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TotalExpensesByCategoryModel &&
+            other is _CategoryExpenseModel &&
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.amount, amount) || other.amount == amount));
@@ -120,31 +117,30 @@ class _TotalExpensesByCategoryModel implements TotalExpensesByCategoryModel {
 
   @override
   String toString() {
-    return 'TotalExpensesByCategoryModel(category: $category, amount: $amount)';
+    return 'CategoryExpenseModel(category: $category, amount: $amount)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$TotalExpensesByCategoryModelCopyWith<$Res>
-    implements $TotalExpensesByCategoryModelCopyWith<$Res> {
-  factory _$TotalExpensesByCategoryModelCopyWith(
-          _TotalExpensesByCategoryModel value,
-          $Res Function(_TotalExpensesByCategoryModel) _then) =
-      __$TotalExpensesByCategoryModelCopyWithImpl;
+abstract mixin class _$CategoryExpenseModelCopyWith<$Res>
+    implements $CategoryExpenseModelCopyWith<$Res> {
+  factory _$CategoryExpenseModelCopyWith(_CategoryExpenseModel value,
+          $Res Function(_CategoryExpenseModel) _then) =
+      __$CategoryExpenseModelCopyWithImpl;
   @override
   @useResult
   $Res call({String category, double amount});
 }
 
 /// @nodoc
-class __$TotalExpensesByCategoryModelCopyWithImpl<$Res>
-    implements _$TotalExpensesByCategoryModelCopyWith<$Res> {
-  __$TotalExpensesByCategoryModelCopyWithImpl(this._self, this._then);
+class __$CategoryExpenseModelCopyWithImpl<$Res>
+    implements _$CategoryExpenseModelCopyWith<$Res> {
+  __$CategoryExpenseModelCopyWithImpl(this._self, this._then);
 
-  final _TotalExpensesByCategoryModel _self;
-  final $Res Function(_TotalExpensesByCategoryModel) _then;
+  final _CategoryExpenseModel _self;
+  final $Res Function(_CategoryExpenseModel) _then;
 
-  /// Create a copy of TotalExpensesByCategoryModel
+  /// Create a copy of CategoryExpenseModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -152,11 +148,173 @@ class __$TotalExpensesByCategoryModelCopyWithImpl<$Res>
     Object? category = null,
     Object? amount = null,
   }) {
-    return _then(_TotalExpensesByCategoryModel(
+    return _then(_CategoryExpenseModel(
       category: null == category
           ? _self.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
+      amount: null == amount
+          ? _self.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+mixin _$TotalCategoryExpensesModel {
+  List<CategoryExpenseModel> get categoryExpenses;
+  double get amount;
+
+  /// Create a copy of TotalCategoryExpensesModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $TotalCategoryExpensesModelCopyWith<TotalCategoryExpensesModel>
+      get copyWith =>
+          _$TotalCategoryExpensesModelCopyWithImpl<TotalCategoryExpensesModel>(
+              this as TotalCategoryExpensesModel, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is TotalCategoryExpensesModel &&
+            const DeepCollectionEquality()
+                .equals(other.categoryExpenses, categoryExpenses) &&
+            (identical(other.amount, amount) || other.amount == amount));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(categoryExpenses), amount);
+
+  @override
+  String toString() {
+    return 'TotalCategoryExpensesModel(categoryExpenses: $categoryExpenses, amount: $amount)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $TotalCategoryExpensesModelCopyWith<$Res> {
+  factory $TotalCategoryExpensesModelCopyWith(TotalCategoryExpensesModel value,
+          $Res Function(TotalCategoryExpensesModel) _then) =
+      _$TotalCategoryExpensesModelCopyWithImpl;
+  @useResult
+  $Res call({List<CategoryExpenseModel> categoryExpenses, double amount});
+}
+
+/// @nodoc
+class _$TotalCategoryExpensesModelCopyWithImpl<$Res>
+    implements $TotalCategoryExpensesModelCopyWith<$Res> {
+  _$TotalCategoryExpensesModelCopyWithImpl(this._self, this._then);
+
+  final TotalCategoryExpensesModel _self;
+  final $Res Function(TotalCategoryExpensesModel) _then;
+
+  /// Create a copy of TotalCategoryExpensesModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? categoryExpenses = null,
+    Object? amount = null,
+  }) {
+    return _then(_self.copyWith(
+      categoryExpenses: null == categoryExpenses
+          ? _self.categoryExpenses
+          : categoryExpenses // ignore: cast_nullable_to_non_nullable
+              as List<CategoryExpenseModel>,
+      amount: null == amount
+          ? _self.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _TotalCategoryExpensesModel implements TotalCategoryExpensesModel {
+  const _TotalCategoryExpensesModel(
+      {required final List<CategoryExpenseModel> categoryExpenses,
+      required this.amount})
+      : _categoryExpenses = categoryExpenses;
+
+  final List<CategoryExpenseModel> _categoryExpenses;
+  @override
+  List<CategoryExpenseModel> get categoryExpenses {
+    if (_categoryExpenses is EqualUnmodifiableListView)
+      return _categoryExpenses;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categoryExpenses);
+  }
+
+  @override
+  final double amount;
+
+  /// Create a copy of TotalCategoryExpensesModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$TotalCategoryExpensesModelCopyWith<_TotalCategoryExpensesModel>
+      get copyWith => __$TotalCategoryExpensesModelCopyWithImpl<
+          _TotalCategoryExpensesModel>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _TotalCategoryExpensesModel &&
+            const DeepCollectionEquality()
+                .equals(other._categoryExpenses, _categoryExpenses) &&
+            (identical(other.amount, amount) || other.amount == amount));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_categoryExpenses), amount);
+
+  @override
+  String toString() {
+    return 'TotalCategoryExpensesModel(categoryExpenses: $categoryExpenses, amount: $amount)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$TotalCategoryExpensesModelCopyWith<$Res>
+    implements $TotalCategoryExpensesModelCopyWith<$Res> {
+  factory _$TotalCategoryExpensesModelCopyWith(
+          _TotalCategoryExpensesModel value,
+          $Res Function(_TotalCategoryExpensesModel) _then) =
+      __$TotalCategoryExpensesModelCopyWithImpl;
+  @override
+  @useResult
+  $Res call({List<CategoryExpenseModel> categoryExpenses, double amount});
+}
+
+/// @nodoc
+class __$TotalCategoryExpensesModelCopyWithImpl<$Res>
+    implements _$TotalCategoryExpensesModelCopyWith<$Res> {
+  __$TotalCategoryExpensesModelCopyWithImpl(this._self, this._then);
+
+  final _TotalCategoryExpensesModel _self;
+  final $Res Function(_TotalCategoryExpensesModel) _then;
+
+  /// Create a copy of TotalCategoryExpensesModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? categoryExpenses = null,
+    Object? amount = null,
+  }) {
+    return _then(_TotalCategoryExpensesModel(
+      categoryExpenses: null == categoryExpenses
+          ? _self._categoryExpenses
+          : categoryExpenses // ignore: cast_nullable_to_non_nullable
+              as List<CategoryExpenseModel>,
       amount: null == amount
           ? _self.amount
           : amount // ignore: cast_nullable_to_non_nullable

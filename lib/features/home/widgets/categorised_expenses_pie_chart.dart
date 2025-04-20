@@ -29,43 +29,66 @@ class CategorisedExpensesPieChartBuilder extends ConsumerWidget {
 class CategorisedExpensesPieChart extends StatelessWidget {
   const CategorisedExpensesPieChart({super.key, required this.data});
 
-  final List<TotalExpensesByCategoryModel> data;
+  final TotalCategoryExpensesModel data;
 
   @override
   Widget build(BuildContext context) {
-    if (data.isEmpty) {
+    if (data.categoryExpenses.isEmpty) {
       return const SizedBox.shrink();
     }
 
-    return SizedBox(
-      height: 350,
-      child: Card(
-        margin: const EdgeInsets.all(16),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            spacing: 16,
-            children: [
-              Text(
-                '${DateFormat('MMMM yyyy').format(DateTime.now())} Expenses',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              Expanded(
-                child: PieChart(
-                  PieChartData(
-                    sections: data
-                        .map(
-                          (e) => PieChartSectionData(
-                            value: e.amount,
-                            title: e.category,
-                          ),
-                        )
-                        .toList(),
-                  ),
+    return Card(
+      margin: const EdgeInsets.all(16),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          spacing: 16,
+          children: [
+            Text(
+              '${DateFormat('MMMM yyyy').format(DateTime.now())} Expenses',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            SizedBox(
+              height: 250,
+              child: PieChart(
+                PieChartData(
+                  sections: data.categoryExpenses
+                      .map(
+                        (e) => PieChartSectionData(
+                          value: e.amount,
+                          title: e.category,
+                        ),
+                      )
+                      .toList(),
                 ),
               ),
-            ],
-          ),
+            ),
+            ...data.categoryExpenses.map(
+              (e) {
+                return ListTile(
+                  title: Text(e.category),
+                  subtitle: Column(
+                    spacing: 4,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${(e.amount / data.amount * 100).toStringAsFixed(2)}%',
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: LinearProgressIndicator(
+                          value: e.amount / data.amount,
+                        ),
+                      ),
+                    ],
+                  ),
+                  trailing: Text(
+                    '\$${e.amount.toStringAsFixed(2)}',
+                  ),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );

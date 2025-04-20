@@ -7,18 +7,25 @@ part 'pie_chart_data_provider.freezed.dart';
 part 'pie_chart_data_provider.g.dart';
 
 @freezed
-abstract class TotalExpensesByCategoryModel
-    with _$TotalExpensesByCategoryModel {
-  const factory TotalExpensesByCategoryModel({
+abstract class CategoryExpenseModel with _$CategoryExpenseModel {
+  const factory CategoryExpenseModel({
     required String category,
     required double amount,
-  }) = _TotalExpensesByCategoryModel;
+  }) = _CategoryExpenseModel;
+}
+
+@freezed
+abstract class TotalCategoryExpensesModel with _$TotalCategoryExpensesModel {
+  const factory TotalCategoryExpensesModel({
+    required List<CategoryExpenseModel> categoryExpenses,
+    required double amount,
+  }) = _TotalCategoryExpensesModel;
 }
 
 @riverpod
 class TotalExpensesByCategory extends _$TotalExpensesByCategory {
   @override
-  Future<List<TotalExpensesByCategoryModel>> build() async {
+  Future<TotalCategoryExpensesModel> build() async {
     final expensesRepository = ref.watch(expenseRepositoryProvider);
 
     final currentDate = DateTime.now();
@@ -31,13 +38,21 @@ class TotalExpensesByCategory extends _$TotalExpensesByCategory {
     final groupedExpenses = currentMonthExpenses
         .groupListsBy((expense) => expense.category ?? 'Other');
 
-    final value = groupedExpenses.entries.map((entry) {
-      return TotalExpensesByCategoryModel(
+    final categoryExpenses = groupedExpenses.entries.map((entry) {
+      return CategoryExpenseModel(
         category: entry.key,
         amount: entry.value.fold(0, (sum, expense) => sum + expense.amount),
       );
     }).toList();
 
-    return value;
+    final totalCurrentMonthExpenses = currentMonthExpenses.fold<double>(
+        0, (sum, expense) => sum + expense.amount);
+
+    final totalCategoryExpenses = TotalCategoryExpensesModel(
+      categoryExpenses: categoryExpenses,
+      amount: totalCurrentMonthExpenses,
+    );
+
+    return totalCategoryExpenses;
   }
 }
