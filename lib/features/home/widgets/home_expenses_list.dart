@@ -4,6 +4,7 @@ import 'package:money_expenses_tracker/common/extensions/context.dart';
 import 'package:money_expenses_tracker/common/widgets/data_state_builder.dart';
 import 'package:money_expenses_tracker/data/models/expense/expense.dart';
 import 'package:money_expenses_tracker/features/expense/pages/create_expense_page.dart';
+import 'package:money_expenses_tracker/features/expense/pages/expenses_page.dart';
 import 'package:money_expenses_tracker/features/expense/providers/recent_expenses_provider.dart';
 import 'package:money_expenses_tracker/features/expense/widgets/expense_list_item.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -58,6 +59,14 @@ class HomeExpensesList extends StatelessWidget {
     );
   }
 
+  void _onViewMore(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const ExpensesPage(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -79,7 +88,7 @@ class HomeExpensesList extends StatelessWidget {
                     children: [
                       const Text('Recent expenses'),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () => _onViewMore(context),
                         child: const Text('View more'),
                       )
                     ],

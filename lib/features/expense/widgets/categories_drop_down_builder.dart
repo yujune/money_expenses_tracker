@@ -11,9 +11,11 @@ class CategoryDropDownBuilder extends ConsumerWidget {
   const CategoryDropDownBuilder({
     super.key,
     this.initialValue,
+    this.onChanged,
   });
 
   final String? initialValue;
+  final ValueChanged<String?>? onChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,6 +25,7 @@ class CategoryDropDownBuilder extends ConsumerWidget {
       data: (categories) => CategoryDropDownFormField(
         initialValue: initialValue,
         categories: categories,
+        onChanged: onChanged,
       ),
       error: (error, stack) => Text(error.toString()),
       loading: () => const Skeletonizer(
@@ -40,10 +43,12 @@ class CategoryDropDownFormField extends StatelessWidget {
     super.key,
     required this.categories,
     this.initialValue,
+    this.onChanged,
   });
 
   final List<CategoryModel> categories;
   final String? initialValue;
+  final ValueChanged<String?>? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +62,7 @@ class CategoryDropDownFormField extends StatelessWidget {
       name: CreateExpenseFormField.category.name,
       decoration: const InputDecoration(labelText: 'Category'),
       initialValue: initialValue,
+      onChanged: onChanged,
       items: categories
           .map(
             (e) => DropdownMenuItem(

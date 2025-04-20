@@ -8,14 +8,18 @@ import 'package:sqflite/sqflite.dart';
 part 'expense.g.dart';
 
 enum ExpenseSortBy {
-  latest(sqlOrderBy: '${ExpenseLocalDbTable.date} DESC'),
-  oldest(sqlOrderBy: '${ExpenseLocalDbTable.date} ASC'),
-  highestAmount(sqlOrderBy: '${ExpenseLocalDbTable.amount} DESC'),
-  lowestAmount(sqlOrderBy: '${ExpenseLocalDbTable.amount} ASC');
+  latest(sqlOrderBy: '${ExpenseLocalDbTable.date} DESC', label: 'Latest'),
+  oldest(sqlOrderBy: '${ExpenseLocalDbTable.date} ASC', label: 'Oldest'),
+  highestAmount(
+      sqlOrderBy: '${ExpenseLocalDbTable.amount} DESC',
+      label: 'Highest Amount'),
+  lowestAmount(
+      sqlOrderBy: '${ExpenseLocalDbTable.amount} ASC', label: 'Lowest Amount');
 
   final String sqlOrderBy;
+  final String label;
 
-  const ExpenseSortBy({required this.sqlOrderBy});
+  const ExpenseSortBy({required this.sqlOrderBy, required this.label});
 }
 
 @riverpod
