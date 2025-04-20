@@ -11,6 +11,7 @@ abstract class IExpenseRepository {
     String? category,
     DateTime? startDate,
     DateTime? endDate,
+    int? limit,
   });
   Future<void> createExpense(CreateExpenseModel expense);
   Future<ExpenseModel> updateExpense(ExpenseModel expense);
@@ -47,12 +48,14 @@ class ExpenseRepository extends IExpenseRepository {
     String? category,
     DateTime? startDate,
     DateTime? endDate,
+    int? limit,
   }) async {
     return await localSource.getExpenses(
       sortBy: sortBy,
       category: category,
       startDate: startDate,
       endDate: endDate,
+      limit: limit,
     );
   }
 

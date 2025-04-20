@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:money_expenses_tracker/common/extensions/context.dart';
 import 'package:money_expenses_tracker/common/widgets/data_state_builder.dart';
 import 'package:money_expenses_tracker/data/models/expense/expense.dart';
-import 'package:money_expenses_tracker/features/expense/providers/expenses_provider.dart';
+import 'package:money_expenses_tracker/features/expense/providers/recent_expenses_provider.dart';
 import 'package:money_expenses_tracker/features/expense/widgets/expense_list_item.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class HomeExpensesListBuilder extends ConsumerWidget {
   const HomeExpensesListBuilder({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final expensesAsyncValue = ref.watch(expensesProvider);
+    final expensesAsyncValue = ref.watch(recentExpensesProvider);
 
     return expensesAsyncValue.when(
       data: (expenses) => HomeExpensesList(
@@ -19,8 +21,21 @@ class HomeExpensesListBuilder extends ConsumerWidget {
       error: (error, stack) => const Center(
         child: Text('Fail to load expenses'),
       ),
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
+      loading: () => Skeletonizer(
+        child: HomeExpensesList(
+          expenses: List.generate(
+            10,
+            (index) => ExpenseModel(
+              id: index,
+              amount: 0,
+              date: DateTime.now(),
+              currency: 'MYR',
+              createdAt: DateTime.now().toIso8601String(),
+              notes: 'Notes' * 6,
+              category: 'Category' * 3,
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -42,15 +57,36 @@ class HomeExpensesList extends StatelessWidget {
       );
     }
 
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        final expense = expenses[index];
+    return Card(
+      color: context.theme.cardColor,
+      margin: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Recent expenses'),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text('View more'),
+                )
+              ],
+            ),
+          ),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              final expense = expenses[index];
 
-        return ExpenseListItem(expense: expense);
-      },
-      itemCount: expenses.length,
+              return ExpenseListItem(expense: expense);
+            },
+            itemCount: expenses.length,
+          ),
+        ],
+      ),
     );
   }
 }

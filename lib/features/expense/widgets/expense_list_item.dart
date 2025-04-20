@@ -17,9 +17,11 @@ class ExpenseListItem extends StatelessWidget {
       title: Row(
         children: [
           const Icon(Icons.attach_money),
-          Text(
-            '${expense.amount} ${expense.currency}',
-            style: context.textTheme.titleLarge,
+          Expanded(
+            child: Text(
+              '${expense.amount} ${expense.currency}',
+              style: context.textTheme.titleLarge,
+            ),
           ),
         ],
       ),
@@ -31,9 +33,11 @@ class ExpenseListItem extends StatelessWidget {
               children: [
                 const Icon(Icons.category, size: 16),
                 const SizedBox(width: 4),
-                Text(
-                  category,
-                  style: context.textTheme.bodyMedium,
+                Expanded(
+                  child: Text(
+                    category,
+                    style: context.textTheme.bodyMedium,
+                  ),
                 ),
               ],
             ),
@@ -42,9 +46,11 @@ class ExpenseListItem extends StatelessWidget {
               children: [
                 const Icon(Icons.note, size: 16),
                 const SizedBox(width: 4),
-                Text(
-                  notes,
-                  style: context.textTheme.bodyMedium,
+                Expanded(
+                  child: Text(
+                    notes,
+                    style: context.textTheme.bodyMedium,
+                  ),
                 ),
               ],
             ),
@@ -53,9 +59,11 @@ class ExpenseListItem extends StatelessWidget {
               children: [
                 const Icon(Icons.calendar_today, size: 16),
                 const SizedBox(width: 4),
-                Text(
-                  DateFormat.yMd().add_jm().format(date),
-                  style: context.textTheme.bodyMedium,
+                Expanded(
+                  child: Text(
+                    DateFormat.yMd().add_jm().format(date),
+                    style: context.textTheme.bodyMedium,
+                  ),
                 ),
               ],
             ),

@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:money_expenses_tracker/common/extensions/context.dart';
 import 'package:money_expenses_tracker/common/widgets/common_progress_indicators.dart';
 import 'package:money_expenses_tracker/data/models/expense/expense.dart';
-import 'package:money_expenses_tracker/features/expense/providers/expenses_provider.dart';
+import 'package:money_expenses_tracker/features/expense/providers/recent_expenses_provider.dart';
 import 'package:money_expenses_tracker/features/expense/widgets/categories_drop_down_builder.dart';
 import 'package:money_expenses_tracker/features/expense/widgets/currency_text_field.dart';
 
@@ -51,7 +51,7 @@ class CreateExpensePage extends HookConsumerWidget {
     try {
       CommonLoading().showLoading(context, message: 'Creating expense');
 
-      await ref.read(expensesProvider.notifier).createExpense(expense);
+      await ref.read(recentExpensesProvider.notifier).createExpense(expense);
 
       if (context.mounted) CommonLoading().stopLoading(context);
 

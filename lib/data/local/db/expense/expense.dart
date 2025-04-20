@@ -57,6 +57,7 @@ class ExpenseLocalSource {
     String? category,
     DateTime? startDate,
     DateTime? endDate,
+    int? limit,
   }) async {
     String? whereClause;
     List<dynamic>? whereArgs;
@@ -88,6 +89,7 @@ class ExpenseLocalSource {
       orderBy: sortBy?.sqlOrderBy,
       where: whereClause,
       whereArgs: whereArgs,
+      limit: limit,
     );
 
     return maps.map((map) => ExpenseModel.fromJson(map)).toList();
