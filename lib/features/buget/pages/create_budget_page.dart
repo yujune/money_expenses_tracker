@@ -142,6 +142,10 @@ class CreateBudgetPage extends HookConsumerWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    Text(
+                      'Add your monthly budget',
+                      style: context.textTheme.bodyMedium,
+                    ),
                     CurrencyTextField(
                       currencyFieldName: CreateBudgetFormField.currency.name,
                       amountFieldName: CreateBudgetFormField.amount.name,
