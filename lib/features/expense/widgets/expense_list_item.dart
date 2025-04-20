@@ -22,66 +22,103 @@ class ExpenseListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => _onTap(context),
-      child: ListTile(
-        title: Row(
-          children: [
-            const Icon(Icons.attach_money),
-            Expanded(
-              child: Text(
-                NumberFormat.currency(
-                  symbol: expense.currency,
-                ).format(expense.amount),
-                style: context.textTheme.titleLarge,
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      elevation: 1,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: InkWell(
+        onTap: () => _onTap(context),
+        borderRadius: BorderRadius.circular(8),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                      color: context.theme.colorScheme.primaryContainer,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Icon(
+                      Icons.attach_money,
+                      size: 16,
+                      color: context.theme.colorScheme.primary,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      NumberFormat.currency(
+                        symbol: expense.currency,
+                      ).format(expense.amount),
+                      style: context.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              if (expense.category case final category?)
+                _InfoRow(
+                  icon: Icons.category,
+                  text: category,
+                ),
+              if (expense.notes case final notes?)
+                _InfoRow(
+                  icon: Icons.note,
+                  text: notes,
+                ),
+              if (expense.date case final date)
+                _InfoRow(
+                  icon: Icons.calendar_today,
+                  text: DateFormat.yMd().add_jm().format(date),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _InfoRow extends StatelessWidget {
+  const _InfoRow({
+    required this.icon,
+    required this.text,
+  });
+
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 4),
+      child: Row(
+        children: [
+          Icon(
+            icon,
+            size: 14,
+            color: context.theme.colorScheme.secondary,
+          ),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Text(
+              text,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: context.textTheme.bodySmall?.copyWith(
+                color: context.theme.colorScheme.onSurfaceVariant,
               ),
             ),
-          ],
-        ),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (expense.category case final category?)
-              Row(
-                children: [
-                  const Icon(Icons.category, size: 16),
-                  const SizedBox(width: 4),
-                  Expanded(
-                    child: Text(
-                      category,
-                      style: context.textTheme.bodyMedium,
-                    ),
-                  ),
-                ],
-              ),
-            if (expense.notes case final notes?)
-              Row(
-                children: [
-                  const Icon(Icons.note, size: 16),
-                  const SizedBox(width: 4),
-                  Expanded(
-                    child: Text(
-                      notes,
-                      style: context.textTheme.bodyMedium,
-                    ),
-                  ),
-                ],
-              ),
-            if (expense.date case final date)
-              Row(
-                children: [
-                  const Icon(Icons.calendar_today, size: 16),
-                  const SizedBox(width: 4),
-                  Expanded(
-                    child: Text(
-                      DateFormat.yMd().add_jm().format(date),
-                      style: context.textTheme.bodyMedium,
-                    ),
-                  ),
-                ],
-              ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
