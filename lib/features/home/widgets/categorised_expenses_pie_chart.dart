@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:money_expenses_tracker/data/repository/currency/currency_repository.dart';
 import 'package:money_expenses_tracker/features/home/providers/pie_chart_data_provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -64,27 +65,30 @@ class CategorisedExpensesPieChart extends StatelessWidget {
               ),
             ),
             ...data.categoryExpenses.map(
-              (e) {
+              (categoryExpense) {
+                final currency = Currency.fromName(categoryExpense.currency);
                 return ListTile(
-                  title: Text(e.category),
+                  title: Text(categoryExpense.category),
                   subtitle: Column(
                     spacing: 4,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${(e.amount / data.amount * 100).toStringAsFixed(2)}%',
+                        '${(categoryExpense.amount / data.amount * 100).toStringAsFixed(2)}%',
                       ),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: LinearProgressIndicator(
-                          value: e.amount / data.amount,
+                          value: categoryExpense.amount / data.amount,
                         ),
                       ),
                     ],
                   ),
                   trailing: Text(
-                    NumberFormat.simpleCurrency(locale: 'en_MY')
-                        .format(e.amount),
+                    NumberFormat.simpleCurrency(
+                      locale: currency.locale,
+                      name: currency.name,
+                    ).format(categoryExpense.amount),
                   ),
                 );
               },

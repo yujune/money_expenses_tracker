@@ -17,6 +17,7 @@ T _$identity<T>(T value) => value;
 mixin _$CategoryExpenseModel {
   String get category;
   double get amount;
+  String get currency;
 
   /// Create a copy of CategoryExpenseModel
   /// with the given fields replaced by the non-null parameter values.
@@ -33,15 +34,17 @@ mixin _$CategoryExpenseModel {
             other is CategoryExpenseModel &&
             (identical(other.category, category) ||
                 other.category == category) &&
-            (identical(other.amount, amount) || other.amount == amount));
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, category, amount);
+  int get hashCode => Object.hash(runtimeType, category, amount, currency);
 
   @override
   String toString() {
-    return 'CategoryExpenseModel(category: $category, amount: $amount)';
+    return 'CategoryExpenseModel(category: $category, amount: $amount, currency: $currency)';
   }
 }
 
@@ -51,7 +54,7 @@ abstract mixin class $CategoryExpenseModelCopyWith<$Res> {
           $Res Function(CategoryExpenseModel) _then) =
       _$CategoryExpenseModelCopyWithImpl;
   @useResult
-  $Res call({String category, double amount});
+  $Res call({String category, double amount, String currency});
 }
 
 /// @nodoc
@@ -69,6 +72,7 @@ class _$CategoryExpenseModelCopyWithImpl<$Res>
   $Res call({
     Object? category = null,
     Object? amount = null,
+    Object? currency = null,
   }) {
     return _then(_self.copyWith(
       category: null == category
@@ -79,6 +83,10 @@ class _$CategoryExpenseModelCopyWithImpl<$Res>
           ? _self.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
+      currency: null == currency
+          ? _self.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -86,12 +94,15 @@ class _$CategoryExpenseModelCopyWithImpl<$Res>
 /// @nodoc
 
 class _CategoryExpenseModel implements CategoryExpenseModel {
-  const _CategoryExpenseModel({required this.category, required this.amount});
+  const _CategoryExpenseModel(
+      {required this.category, required this.amount, required this.currency});
 
   @override
   final String category;
   @override
   final double amount;
+  @override
+  final String currency;
 
   /// Create a copy of CategoryExpenseModel
   /// with the given fields replaced by the non-null parameter values.
@@ -109,15 +120,17 @@ class _CategoryExpenseModel implements CategoryExpenseModel {
             other is _CategoryExpenseModel &&
             (identical(other.category, category) ||
                 other.category == category) &&
-            (identical(other.amount, amount) || other.amount == amount));
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, category, amount);
+  int get hashCode => Object.hash(runtimeType, category, amount, currency);
 
   @override
   String toString() {
-    return 'CategoryExpenseModel(category: $category, amount: $amount)';
+    return 'CategoryExpenseModel(category: $category, amount: $amount, currency: $currency)';
   }
 }
 
@@ -129,7 +142,7 @@ abstract mixin class _$CategoryExpenseModelCopyWith<$Res>
       __$CategoryExpenseModelCopyWithImpl;
   @override
   @useResult
-  $Res call({String category, double amount});
+  $Res call({String category, double amount, String currency});
 }
 
 /// @nodoc
@@ -147,6 +160,7 @@ class __$CategoryExpenseModelCopyWithImpl<$Res>
   $Res call({
     Object? category = null,
     Object? amount = null,
+    Object? currency = null,
   }) {
     return _then(_CategoryExpenseModel(
       category: null == category
@@ -157,6 +171,10 @@ class __$CategoryExpenseModelCopyWithImpl<$Res>
           ? _self.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
+      currency: null == currency
+          ? _self.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -165,6 +183,7 @@ class __$CategoryExpenseModelCopyWithImpl<$Res>
 mixin _$TotalCategoryExpensesModel {
   List<CategoryExpenseModel> get categoryExpenses;
   double get amount;
+  String get currency;
 
   /// Create a copy of TotalCategoryExpensesModel
   /// with the given fields replaced by the non-null parameter values.
@@ -182,16 +201,18 @@ mixin _$TotalCategoryExpensesModel {
             other is TotalCategoryExpensesModel &&
             const DeepCollectionEquality()
                 .equals(other.categoryExpenses, categoryExpenses) &&
-            (identical(other.amount, amount) || other.amount == amount));
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(categoryExpenses), amount);
+      const DeepCollectionEquality().hash(categoryExpenses), amount, currency);
 
   @override
   String toString() {
-    return 'TotalCategoryExpensesModel(categoryExpenses: $categoryExpenses, amount: $amount)';
+    return 'TotalCategoryExpensesModel(categoryExpenses: $categoryExpenses, amount: $amount, currency: $currency)';
   }
 }
 
@@ -201,7 +222,10 @@ abstract mixin class $TotalCategoryExpensesModelCopyWith<$Res> {
           $Res Function(TotalCategoryExpensesModel) _then) =
       _$TotalCategoryExpensesModelCopyWithImpl;
   @useResult
-  $Res call({List<CategoryExpenseModel> categoryExpenses, double amount});
+  $Res call(
+      {List<CategoryExpenseModel> categoryExpenses,
+      double amount,
+      String currency});
 }
 
 /// @nodoc
@@ -219,6 +243,7 @@ class _$TotalCategoryExpensesModelCopyWithImpl<$Res>
   $Res call({
     Object? categoryExpenses = null,
     Object? amount = null,
+    Object? currency = null,
   }) {
     return _then(_self.copyWith(
       categoryExpenses: null == categoryExpenses
@@ -229,6 +254,10 @@ class _$TotalCategoryExpensesModelCopyWithImpl<$Res>
           ? _self.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
+      currency: null == currency
+          ? _self.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -238,7 +267,8 @@ class _$TotalCategoryExpensesModelCopyWithImpl<$Res>
 class _TotalCategoryExpensesModel implements TotalCategoryExpensesModel {
   const _TotalCategoryExpensesModel(
       {required final List<CategoryExpenseModel> categoryExpenses,
-      required this.amount})
+      required this.amount,
+      required this.currency})
       : _categoryExpenses = categoryExpenses;
 
   final List<CategoryExpenseModel> _categoryExpenses;
@@ -252,6 +282,8 @@ class _TotalCategoryExpensesModel implements TotalCategoryExpensesModel {
 
   @override
   final double amount;
+  @override
+  final String currency;
 
   /// Create a copy of TotalCategoryExpensesModel
   /// with the given fields replaced by the non-null parameter values.
@@ -269,16 +301,18 @@ class _TotalCategoryExpensesModel implements TotalCategoryExpensesModel {
             other is _TotalCategoryExpensesModel &&
             const DeepCollectionEquality()
                 .equals(other._categoryExpenses, _categoryExpenses) &&
-            (identical(other.amount, amount) || other.amount == amount));
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_categoryExpenses), amount);
+      const DeepCollectionEquality().hash(_categoryExpenses), amount, currency);
 
   @override
   String toString() {
-    return 'TotalCategoryExpensesModel(categoryExpenses: $categoryExpenses, amount: $amount)';
+    return 'TotalCategoryExpensesModel(categoryExpenses: $categoryExpenses, amount: $amount, currency: $currency)';
   }
 }
 
@@ -291,7 +325,10 @@ abstract mixin class _$TotalCategoryExpensesModelCopyWith<$Res>
       __$TotalCategoryExpensesModelCopyWithImpl;
   @override
   @useResult
-  $Res call({List<CategoryExpenseModel> categoryExpenses, double amount});
+  $Res call(
+      {List<CategoryExpenseModel> categoryExpenses,
+      double amount,
+      String currency});
 }
 
 /// @nodoc
@@ -309,6 +346,7 @@ class __$TotalCategoryExpensesModelCopyWithImpl<$Res>
   $Res call({
     Object? categoryExpenses = null,
     Object? amount = null,
+    Object? currency = null,
   }) {
     return _then(_TotalCategoryExpensesModel(
       categoryExpenses: null == categoryExpenses
@@ -319,6 +357,10 @@ class __$TotalCategoryExpensesModelCopyWithImpl<$Res>
           ? _self.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
+      currency: null == currency
+          ? _self.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }

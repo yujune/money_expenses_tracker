@@ -7,7 +7,7 @@ part of 'pie_chart_data_provider.dart';
 // **************************************************************************
 
 String _$totalExpensesByCategoryHash() =>
-    r'f2b2d1304978cb5dcd7e66c9a3ba75389bd8a1ae';
+    r'9392ce78949db7250430b9a5765abe2d58165eef';
 
 /// See also [TotalExpensesByCategory].
 @ProviderFor(TotalExpensesByCategory)

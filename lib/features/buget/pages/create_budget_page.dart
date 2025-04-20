@@ -134,7 +134,9 @@ class CreateBudgetPage extends HookConsumerWidget {
                 initialValue: isUpdate
                     ? {
                         CreateBudgetFormField.amount.name:
-                            currentBudget!.amount.toString(),
+                            currentBudget?.amount.toString(),
+                        CreateBudgetFormField.currency.name:
+                            currentBudget?.currency,
                       }
                     : {},
                 child: Column(
@@ -150,6 +152,7 @@ class CreateBudgetPage extends HookConsumerWidget {
                       currencyFieldName: CreateBudgetFormField.currency.name,
                       amountFieldName: CreateBudgetFormField.amount.name,
                       initialAmount: currentBudget?.amount.toString(),
+                      initialCurrency: currentBudget?.currency,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16),

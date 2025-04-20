@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:money_expenses_tracker/common/extensions/context.dart';
 import 'package:money_expenses_tracker/common/widgets/data_state_builder.dart';
 import 'package:money_expenses_tracker/data/models/buget/buget.dart';
+import 'package:money_expenses_tracker/data/repository/currency/currency_repository.dart';
 import 'package:money_expenses_tracker/features/buget/pages/create_budget_page.dart';
 import 'package:money_expenses_tracker/features/buget/providers/budget_provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -59,8 +60,14 @@ class BudgetDashboard extends StatelessWidget {
     );
   }
 
-  String _formatCurrency(double amount) {
-    return NumberFormat.simpleCurrency(locale: 'en_MY').format(amount);
+  String _formatCurrency({
+    required double amount,
+    required Currency currency,
+  }) {
+    return NumberFormat.simpleCurrency(
+      locale: currency.locale,
+      name: currency.name,
+    ).format(amount);
   }
 
   String _getCurrentMonthYear() {
@@ -90,6 +97,7 @@ class BudgetDashboard extends StatelessWidget {
 
     final remaining = budget!.amount - budget!.totalSpent;
     final progress = budget!.totalSpent / budget!.amount;
+    final budgetCurrency = Currency.fromName(budget!.currency);
 
     return Card(
       margin: const EdgeInsets.all(8),
@@ -141,7 +149,10 @@ class BudgetDashboard extends StatelessWidget {
               ),
             ),
             Text(
-              _formatCurrency(remaining),
+              _formatCurrency(
+                amount: remaining,
+                currency: budgetCurrency,
+              ),
               style: context.textTheme.displayMedium?.copyWith(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -174,7 +185,10 @@ class BudgetDashboard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        _formatCurrency(budget!.amount),
+                        _formatCurrency(
+                          amount: budget!.amount,
+                          currency: budgetCurrency,
+                        ),
                         style: context.textTheme.bodyLarge?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
@@ -194,7 +208,10 @@ class BudgetDashboard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        _formatCurrency(budget!.totalSpent),
+                        _formatCurrency(
+                          amount: budget!.totalSpent,
+                          currency: budgetCurrency,
+                        ),
                         style: context.theme.textTheme.bodyLarge?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
