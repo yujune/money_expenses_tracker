@@ -70,36 +70,32 @@ class HomeExpensesList extends StatelessWidget {
               buttonTitle: 'Add',
               onButtonTap: () => _onAddExpense(context),
             )
-          : Card(
-              color: context.theme.cardColor,
-              margin: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('Recent expenses'),
-                        TextButton(
-                          onPressed: () {},
-                          child: const Text('View more'),
-                        )
-                      ],
-                    ),
+          : Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text('Recent expenses'),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text('View more'),
+                      )
+                    ],
                   ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      final expense = expenses[index];
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    final expense = expenses[index];
 
-                      return ExpenseListItem(expense: expense);
-                    },
-                    itemCount: expenses.length,
-                  ),
-                ],
-              ),
+                    return ExpenseListItem(expense: expense);
+                  },
+                  itemCount: expenses.length,
+                ),
+              ],
             ),
     );
   }
