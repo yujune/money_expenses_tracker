@@ -3,6 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:money_expenses_tracker/common/extensions/context.dart';
+import 'package:money_expenses_tracker/common/widgets/common_progress_indicators.dart';
 import 'package:money_expenses_tracker/data/models/expense/expense.dart';
 import 'package:money_expenses_tracker/features/expense/providers/expenses_provider.dart';
 import 'package:money_expenses_tracker/features/expense/widgets/categories_drop_down_builder.dart';
@@ -47,9 +48,17 @@ class CreateExpensePage extends HookConsumerWidget {
       date: date,
     );
 
-    await ref.read(expensesProvider.notifier).createExpense(expense);
+    try {
+      CommonLoading().showLoading(context, message: 'Creating expense');
 
-    Navigator.of(context).pop();
+      await ref.read(expensesProvider.notifier).createExpense(expense);
+
+      if (context.mounted) CommonLoading().stopLoading(context);
+
+      if (context.mounted) Navigator.of(context).pop();
+    } catch (error) {
+      if (context.mounted) CommonLoading().stopLoading(context);
+    }
   }
 
   @override

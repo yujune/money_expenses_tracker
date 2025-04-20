@@ -3,6 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:money_expenses_tracker/common/extensions/context.dart';
+import 'package:money_expenses_tracker/common/widgets/common_progress_indicators.dart';
 import 'package:money_expenses_tracker/data/models/buget/buget.dart';
 import 'package:money_expenses_tracker/features/buget/providers/buget_provider.dart';
 import 'package:money_expenses_tracker/features/expense/widgets/currency_text_field.dart';
@@ -24,19 +25,27 @@ class CreateBudgetPage extends HookConsumerWidget {
       return;
     }
 
-    final amount =
-        formKey.currentState?.fields[CreateBudgetFormField.amount.name]?.value;
-    final currency = formKey
-        .currentState?.fields[CreateBudgetFormField.currency.name]?.value;
+    try {
+      CommonLoading().showLoading(context, message: 'Creating budget');
 
-    final budget = CreateBudgetModel(
-      amount: double.parse(amount),
-      type: BudgetType.monthly,
-    );
+      final amount = formKey
+          .currentState?.fields[CreateBudgetFormField.amount.name]?.value;
+      final currency = formKey
+          .currentState?.fields[CreateBudgetFormField.currency.name]?.value;
 
-    await ref.read(budgetProvider.notifier).createBudget(budget);
+      final budget = CreateBudgetModel(
+        amount: double.parse(amount),
+        type: BudgetType.monthly,
+      );
 
-    Navigator.of(context).pop();
+      await ref.read(budgetProvider.notifier).createBudget(budget);
+
+      if (context.mounted) CommonLoading().stopLoading(context);
+
+      if (context.mounted) Navigator.of(context).pop();
+    } catch (error) {
+      if (context.mounted) CommonLoading().stopLoading(context);
+    }
   }
 
   @override
