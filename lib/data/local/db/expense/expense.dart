@@ -7,6 +7,17 @@ import 'package:sqflite/sqflite.dart';
 
 part 'expense.g.dart';
 
+enum ExpenseSortBy {
+  latest(sqlOrderBy: '${ExpenseLocalDbTable.date} DESC'),
+  oldest(sqlOrderBy: '${ExpenseLocalDbTable.date} ASC'),
+  highestAmount(sqlOrderBy: '${ExpenseLocalDbTable.amount} DESC'),
+  lowestAmount(sqlOrderBy: '${ExpenseLocalDbTable.amount} ASC');
+
+  final String sqlOrderBy;
+
+  const ExpenseSortBy({required this.sqlOrderBy});
+}
+
 @riverpod
 ExpenseLocalSource expenseLocalSource(Ref ref) {
   return ExpenseLocalSource(SqfliteDbManager.db);
@@ -41,9 +52,42 @@ class ExpenseLocalSource {
     );
   }
 
-  Future<List<ExpenseModel>> getExpenses() async {
+  Future<List<ExpenseModel>> getExpenses({
+    ExpenseSortBy? sortBy,
+    String? category,
+    DateTime? startDate,
+    DateTime? endDate,
+  }) async {
+    String? whereClause;
+    List<dynamic>? whereArgs;
+
+    if (category != null || startDate != null || endDate != null) {
+      final conditions = <String>[];
+      whereArgs = [];
+
+      if (category != null) {
+        conditions.add('${ExpenseLocalDbTable.category} = ?');
+        whereArgs.add(category);
+      }
+
+      if (startDate != null) {
+        conditions.add('${ExpenseLocalDbTable.date} >= ?');
+        whereArgs.add(startDate.toIso8601String());
+      }
+
+      if (endDate != null) {
+        conditions.add('${ExpenseLocalDbTable.date} <= ?');
+        whereArgs.add(endDate.toIso8601String());
+      }
+
+      whereClause = conditions.join(' AND ');
+    }
+
     final List<Map<String, dynamic>> maps = await db.query(
       ExpenseLocalDbTable().tableName,
+      orderBy: sortBy?.sqlOrderBy,
+      where: whereClause,
+      whereArgs: whereArgs,
     );
 
     return maps.map((map) => ExpenseModel.fromJson(map)).toList();

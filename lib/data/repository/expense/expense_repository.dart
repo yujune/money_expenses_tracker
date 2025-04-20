@@ -6,7 +6,12 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'expense_repository.g.dart';
 
 abstract class IExpenseRepository {
-  Future<List<ExpenseModel>> getExpenses();
+  Future<List<ExpenseModel>> getExpenses({
+    ExpenseSortBy? sortBy,
+    String? category,
+    DateTime? startDate,
+    DateTime? endDate,
+  });
   Future<void> createExpense(CreateExpenseModel expense);
   Future<ExpenseModel> updateExpense(ExpenseModel expense);
   Future<void> deleteExpense(int id);
@@ -37,8 +42,18 @@ class ExpenseRepository extends IExpenseRepository {
   }
 
   @override
-  Future<List<ExpenseModel>> getExpenses() async {
-    return await localSource.getExpenses();
+  Future<List<ExpenseModel>> getExpenses({
+    ExpenseSortBy? sortBy,
+    String? category,
+    DateTime? startDate,
+    DateTime? endDate,
+  }) async {
+    return await localSource.getExpenses(
+      sortBy: sortBy,
+      category: category,
+      startDate: startDate,
+      endDate: endDate,
+    );
   }
 
   @override

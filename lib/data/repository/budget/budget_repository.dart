@@ -7,7 +7,7 @@ part 'budget_repository.g.dart';
 
 abstract class IBudgetRepository {
   Future<BudgetModel?> getBudget({BudgetType? type});
-  Future<BudgetModel> createBudget(BudgetModel budget);
+  Future<void> createBudget(CreateBudgetModel budget);
   Future<BudgetModel> updateBudget(BudgetModel budget);
   Future<void> deleteBudget(int id);
 }
@@ -25,9 +25,8 @@ class BudgetRepository extends IBudgetRepository {
   final BudgetLocalSource localSource;
 
   @override
-  Future<BudgetModel> createBudget(BudgetModel budget) async {
+  Future<void> createBudget(CreateBudgetModel budget) async {
     await localSource.insertBudget(budget);
-    return budget;
   }
 
   @override

@@ -14,10 +14,170 @@ part of 'buget.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
+mixin _$CreateBudgetModel {
+  double get amount;
+  BudgetType get type;
+
+  /// Create a copy of CreateBudgetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $CreateBudgetModelCopyWith<CreateBudgetModel> get copyWith =>
+      _$CreateBudgetModelCopyWithImpl<CreateBudgetModel>(
+          this as CreateBudgetModel, _$identity);
+
+  /// Serializes this CreateBudgetModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CreateBudgetModel &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, amount, type);
+
+  @override
+  String toString() {
+    return 'CreateBudgetModel(amount: $amount, type: $type)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $CreateBudgetModelCopyWith<$Res> {
+  factory $CreateBudgetModelCopyWith(
+          CreateBudgetModel value, $Res Function(CreateBudgetModel) _then) =
+      _$CreateBudgetModelCopyWithImpl;
+  @useResult
+  $Res call({double amount, BudgetType type});
+}
+
+/// @nodoc
+class _$CreateBudgetModelCopyWithImpl<$Res>
+    implements $CreateBudgetModelCopyWith<$Res> {
+  _$CreateBudgetModelCopyWithImpl(this._self, this._then);
+
+  final CreateBudgetModel _self;
+  final $Res Function(CreateBudgetModel) _then;
+
+  /// Create a copy of CreateBudgetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? amount = null,
+    Object? type = null,
+  }) {
+    return _then(_self.copyWith(
+      amount: null == amount
+          ? _self.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as BudgetType,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _CreateBudgetModel implements CreateBudgetModel {
+  const _CreateBudgetModel({required this.amount, required this.type});
+  factory _CreateBudgetModel.fromJson(Map<String, dynamic> json) =>
+      _$CreateBudgetModelFromJson(json);
+
+  @override
+  final double amount;
+  @override
+  final BudgetType type;
+
+  /// Create a copy of CreateBudgetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CreateBudgetModelCopyWith<_CreateBudgetModel> get copyWith =>
+      __$CreateBudgetModelCopyWithImpl<_CreateBudgetModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CreateBudgetModelToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _CreateBudgetModel &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, amount, type);
+
+  @override
+  String toString() {
+    return 'CreateBudgetModel(amount: $amount, type: $type)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$CreateBudgetModelCopyWith<$Res>
+    implements $CreateBudgetModelCopyWith<$Res> {
+  factory _$CreateBudgetModelCopyWith(
+          _CreateBudgetModel value, $Res Function(_CreateBudgetModel) _then) =
+      __$CreateBudgetModelCopyWithImpl;
+  @override
+  @useResult
+  $Res call({double amount, BudgetType type});
+}
+
+/// @nodoc
+class __$CreateBudgetModelCopyWithImpl<$Res>
+    implements _$CreateBudgetModelCopyWith<$Res> {
+  __$CreateBudgetModelCopyWithImpl(this._self, this._then);
+
+  final _CreateBudgetModel _self;
+  final $Res Function(_CreateBudgetModel) _then;
+
+  /// Create a copy of CreateBudgetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? amount = null,
+    Object? type = null,
+  }) {
+    return _then(_CreateBudgetModel(
+      amount: null == amount
+          ? _self.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as BudgetType,
+    ));
+  }
+}
+
+/// @nodoc
 mixin _$BudgetModel {
   int get id;
   double get amount;
   BudgetType get type;
+  double get totalSpent;
 
   /// Create a copy of BudgetModel
   /// with the given fields replaced by the non-null parameter values.
@@ -36,16 +196,18 @@ mixin _$BudgetModel {
             other is BudgetModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.totalSpent, totalSpent) ||
+                other.totalSpent == totalSpent));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, amount, type);
+  int get hashCode => Object.hash(runtimeType, id, amount, type, totalSpent);
 
   @override
   String toString() {
-    return 'BudgetModel(id: $id, amount: $amount, type: $type)';
+    return 'BudgetModel(id: $id, amount: $amount, type: $type, totalSpent: $totalSpent)';
   }
 }
 
@@ -55,7 +217,7 @@ abstract mixin class $BudgetModelCopyWith<$Res> {
           BudgetModel value, $Res Function(BudgetModel) _then) =
       _$BudgetModelCopyWithImpl;
   @useResult
-  $Res call({int id, double amount, BudgetType type});
+  $Res call({int id, double amount, BudgetType type, double totalSpent});
 }
 
 /// @nodoc
@@ -73,6 +235,7 @@ class _$BudgetModelCopyWithImpl<$Res> implements $BudgetModelCopyWith<$Res> {
     Object? id = null,
     Object? amount = null,
     Object? type = null,
+    Object? totalSpent = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -87,6 +250,10 @@ class _$BudgetModelCopyWithImpl<$Res> implements $BudgetModelCopyWith<$Res> {
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as BudgetType,
+      totalSpent: null == totalSpent
+          ? _self.totalSpent
+          : totalSpent // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -95,7 +262,10 @@ class _$BudgetModelCopyWithImpl<$Res> implements $BudgetModelCopyWith<$Res> {
 @JsonSerializable()
 class _BudgetModel implements BudgetModel {
   const _BudgetModel(
-      {required this.id, required this.amount, required this.type});
+      {required this.id,
+      required this.amount,
+      required this.type,
+      this.totalSpent = 0});
   factory _BudgetModel.fromJson(Map<String, dynamic> json) =>
       _$BudgetModelFromJson(json);
 
@@ -105,6 +275,9 @@ class _BudgetModel implements BudgetModel {
   final double amount;
   @override
   final BudgetType type;
+  @override
+  @JsonKey()
+  final double totalSpent;
 
   /// Create a copy of BudgetModel
   /// with the given fields replaced by the non-null parameter values.
@@ -128,16 +301,18 @@ class _BudgetModel implements BudgetModel {
             other is _BudgetModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.totalSpent, totalSpent) ||
+                other.totalSpent == totalSpent));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, amount, type);
+  int get hashCode => Object.hash(runtimeType, id, amount, type, totalSpent);
 
   @override
   String toString() {
-    return 'BudgetModel(id: $id, amount: $amount, type: $type)';
+    return 'BudgetModel(id: $id, amount: $amount, type: $type, totalSpent: $totalSpent)';
   }
 }
 
@@ -149,7 +324,7 @@ abstract mixin class _$BudgetModelCopyWith<$Res>
       __$BudgetModelCopyWithImpl;
   @override
   @useResult
-  $Res call({int id, double amount, BudgetType type});
+  $Res call({int id, double amount, BudgetType type, double totalSpent});
 }
 
 /// @nodoc
@@ -167,6 +342,7 @@ class __$BudgetModelCopyWithImpl<$Res> implements _$BudgetModelCopyWith<$Res> {
     Object? id = null,
     Object? amount = null,
     Object? type = null,
+    Object? totalSpent = null,
   }) {
     return _then(_BudgetModel(
       id: null == id
@@ -181,6 +357,10 @@ class __$BudgetModelCopyWithImpl<$Res> implements _$BudgetModelCopyWith<$Res> {
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as BudgetType,
+      totalSpent: null == totalSpent
+          ? _self.totalSpent
+          : totalSpent // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }

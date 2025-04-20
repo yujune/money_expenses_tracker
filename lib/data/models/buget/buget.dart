@@ -14,11 +14,23 @@ enum BudgetType {
 }
 
 @freezed
+abstract class CreateBudgetModel with _$CreateBudgetModel {
+  const factory CreateBudgetModel({
+    required double amount,
+    required BudgetType type,
+  }) = _CreateBudgetModel;
+
+  factory CreateBudgetModel.fromJson(Map<String, dynamic> json) =>
+      _$CreateBudgetModelFromJson(json);
+}
+
+@freezed
 abstract class BudgetModel with _$BudgetModel {
   const factory BudgetModel({
     required int id,
     required double amount,
     required BudgetType type,
+    @Default(0) double totalSpent,
   }) = _BudgetModel;
 
   factory BudgetModel.fromJson(Map<String, dynamic> json) =>
