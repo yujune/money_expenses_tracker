@@ -25,6 +25,7 @@ class BudgetDashboardBuilder extends ConsumerWidget {
             amount: 100,
             type: BudgetType.monthly,
             totalSpent: 100,
+            currency: 'MYR',
           ),
         ),
       ),

@@ -18,6 +18,7 @@ abstract class CreateBudgetModel with _$CreateBudgetModel {
   const factory CreateBudgetModel({
     required double amount,
     required BudgetType type,
+    required String currency,
   }) = _CreateBudgetModel;
 
   factory CreateBudgetModel.fromJson(Map<String, dynamic> json) =>
@@ -30,6 +31,7 @@ abstract class UpdateBudgetModel with _$UpdateBudgetModel {
     required int id,
     required double amount,
     required BudgetType type,
+    required String currency,
   }) = _UpdateBudgetModel;
 
   factory UpdateBudgetModel.fromJson(Map<String, dynamic> json) =>
@@ -42,6 +44,7 @@ abstract class BudgetModel with _$BudgetModel {
     required int id,
     required double amount,
     required BudgetType type,
+    required String currency,
     @Default(0) double totalSpent,
   }) = _BudgetModel;
 

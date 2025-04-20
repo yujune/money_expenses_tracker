@@ -5,6 +5,7 @@ class BudgetLocalDbTable extends SqfliteLocalDbTable {
   static const String id = 'id';
   static const String amount = 'amount';
   static const String type = 'type';
+  static const String currency = 'currency';
   static const String createdAt = 'createdAt';
   static const String updatedAt = 'updatedAt';
 
@@ -26,6 +27,7 @@ class BudgetLocalDbTable extends SqfliteLocalDbTable {
       $id INTEGER PRIMARY KEY AUTOINCREMENT, 
       $amount REAL NOT NULL, 
       $type TEXT NOT NULL,
+      $currency TEXT NOT NULL,
       $createdAt TEXT DEFAULT CURRENT_TIMESTAMP,
       $updatedAt TEXT
       )''',

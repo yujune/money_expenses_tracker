@@ -41,6 +41,7 @@ class CreateBudgetPage extends HookConsumerWidget {
       final budget = CreateBudgetModel(
         amount: double.parse(amount),
         type: BudgetType.monthly,
+        currency: currency,
       );
 
       await ref.read(budgetProvider.notifier).createBudget(budget);
@@ -74,6 +75,7 @@ class CreateBudgetPage extends HookConsumerWidget {
         id: currentBudget!.id,
         amount: double.parse(amount),
         type: currentBudget!.type,
+        currency: currency,
       );
 
       await ref.read(budgetProvider.notifier).updateBudget(newBudget);

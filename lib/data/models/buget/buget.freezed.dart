@@ -17,6 +17,7 @@ T _$identity<T>(T value) => value;
 mixin _$CreateBudgetModel {
   double get amount;
   BudgetType get type;
+  String get currency;
 
   /// Create a copy of CreateBudgetModel
   /// with the given fields replaced by the non-null parameter values.
@@ -35,16 +36,18 @@ mixin _$CreateBudgetModel {
         (other.runtimeType == runtimeType &&
             other is CreateBudgetModel &&
             (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, amount, type);
+  int get hashCode => Object.hash(runtimeType, amount, type, currency);
 
   @override
   String toString() {
-    return 'CreateBudgetModel(amount: $amount, type: $type)';
+    return 'CreateBudgetModel(amount: $amount, type: $type, currency: $currency)';
   }
 }
 
@@ -54,7 +57,7 @@ abstract mixin class $CreateBudgetModelCopyWith<$Res> {
           CreateBudgetModel value, $Res Function(CreateBudgetModel) _then) =
       _$CreateBudgetModelCopyWithImpl;
   @useResult
-  $Res call({double amount, BudgetType type});
+  $Res call({double amount, BudgetType type, String currency});
 }
 
 /// @nodoc
@@ -72,6 +75,7 @@ class _$CreateBudgetModelCopyWithImpl<$Res>
   $Res call({
     Object? amount = null,
     Object? type = null,
+    Object? currency = null,
   }) {
     return _then(_self.copyWith(
       amount: null == amount
@@ -82,6 +86,10 @@ class _$CreateBudgetModelCopyWithImpl<$Res>
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as BudgetType,
+      currency: null == currency
+          ? _self.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -89,7 +97,8 @@ class _$CreateBudgetModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _CreateBudgetModel implements CreateBudgetModel {
-  const _CreateBudgetModel({required this.amount, required this.type});
+  const _CreateBudgetModel(
+      {required this.amount, required this.type, required this.currency});
   factory _CreateBudgetModel.fromJson(Map<String, dynamic> json) =>
       _$CreateBudgetModelFromJson(json);
 
@@ -97,6 +106,8 @@ class _CreateBudgetModel implements CreateBudgetModel {
   final double amount;
   @override
   final BudgetType type;
+  @override
+  final String currency;
 
   /// Create a copy of CreateBudgetModel
   /// with the given fields replaced by the non-null parameter values.
@@ -119,16 +130,18 @@ class _CreateBudgetModel implements CreateBudgetModel {
         (other.runtimeType == runtimeType &&
             other is _CreateBudgetModel &&
             (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, amount, type);
+  int get hashCode => Object.hash(runtimeType, amount, type, currency);
 
   @override
   String toString() {
-    return 'CreateBudgetModel(amount: $amount, type: $type)';
+    return 'CreateBudgetModel(amount: $amount, type: $type, currency: $currency)';
   }
 }
 
@@ -140,7 +153,7 @@ abstract mixin class _$CreateBudgetModelCopyWith<$Res>
       __$CreateBudgetModelCopyWithImpl;
   @override
   @useResult
-  $Res call({double amount, BudgetType type});
+  $Res call({double amount, BudgetType type, String currency});
 }
 
 /// @nodoc
@@ -158,6 +171,7 @@ class __$CreateBudgetModelCopyWithImpl<$Res>
   $Res call({
     Object? amount = null,
     Object? type = null,
+    Object? currency = null,
   }) {
     return _then(_CreateBudgetModel(
       amount: null == amount
@@ -168,6 +182,10 @@ class __$CreateBudgetModelCopyWithImpl<$Res>
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as BudgetType,
+      currency: null == currency
+          ? _self.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -177,6 +195,7 @@ mixin _$UpdateBudgetModel {
   int get id;
   double get amount;
   BudgetType get type;
+  String get currency;
 
   /// Create a copy of UpdateBudgetModel
   /// with the given fields replaced by the non-null parameter values.
@@ -196,16 +215,18 @@ mixin _$UpdateBudgetModel {
             other is UpdateBudgetModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, amount, type);
+  int get hashCode => Object.hash(runtimeType, id, amount, type, currency);
 
   @override
   String toString() {
-    return 'UpdateBudgetModel(id: $id, amount: $amount, type: $type)';
+    return 'UpdateBudgetModel(id: $id, amount: $amount, type: $type, currency: $currency)';
   }
 }
 
@@ -215,7 +236,7 @@ abstract mixin class $UpdateBudgetModelCopyWith<$Res> {
           UpdateBudgetModel value, $Res Function(UpdateBudgetModel) _then) =
       _$UpdateBudgetModelCopyWithImpl;
   @useResult
-  $Res call({int id, double amount, BudgetType type});
+  $Res call({int id, double amount, BudgetType type, String currency});
 }
 
 /// @nodoc
@@ -234,6 +255,7 @@ class _$UpdateBudgetModelCopyWithImpl<$Res>
     Object? id = null,
     Object? amount = null,
     Object? type = null,
+    Object? currency = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -248,6 +270,10 @@ class _$UpdateBudgetModelCopyWithImpl<$Res>
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as BudgetType,
+      currency: null == currency
+          ? _self.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -256,7 +282,10 @@ class _$UpdateBudgetModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _UpdateBudgetModel implements UpdateBudgetModel {
   const _UpdateBudgetModel(
-      {required this.id, required this.amount, required this.type});
+      {required this.id,
+      required this.amount,
+      required this.type,
+      required this.currency});
   factory _UpdateBudgetModel.fromJson(Map<String, dynamic> json) =>
       _$UpdateBudgetModelFromJson(json);
 
@@ -266,6 +295,8 @@ class _UpdateBudgetModel implements UpdateBudgetModel {
   final double amount;
   @override
   final BudgetType type;
+  @override
+  final String currency;
 
   /// Create a copy of UpdateBudgetModel
   /// with the given fields replaced by the non-null parameter values.
@@ -289,16 +320,18 @@ class _UpdateBudgetModel implements UpdateBudgetModel {
             other is _UpdateBudgetModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, amount, type);
+  int get hashCode => Object.hash(runtimeType, id, amount, type, currency);
 
   @override
   String toString() {
-    return 'UpdateBudgetModel(id: $id, amount: $amount, type: $type)';
+    return 'UpdateBudgetModel(id: $id, amount: $amount, type: $type, currency: $currency)';
   }
 }
 
@@ -310,7 +343,7 @@ abstract mixin class _$UpdateBudgetModelCopyWith<$Res>
       __$UpdateBudgetModelCopyWithImpl;
   @override
   @useResult
-  $Res call({int id, double amount, BudgetType type});
+  $Res call({int id, double amount, BudgetType type, String currency});
 }
 
 /// @nodoc
@@ -329,6 +362,7 @@ class __$UpdateBudgetModelCopyWithImpl<$Res>
     Object? id = null,
     Object? amount = null,
     Object? type = null,
+    Object? currency = null,
   }) {
     return _then(_UpdateBudgetModel(
       id: null == id
@@ -343,6 +377,10 @@ class __$UpdateBudgetModelCopyWithImpl<$Res>
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as BudgetType,
+      currency: null == currency
+          ? _self.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -352,6 +390,7 @@ mixin _$BudgetModel {
   int get id;
   double get amount;
   BudgetType get type;
+  String get currency;
   double get totalSpent;
 
   /// Create a copy of BudgetModel
@@ -372,17 +411,20 @@ mixin _$BudgetModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
             (identical(other.totalSpent, totalSpent) ||
                 other.totalSpent == totalSpent));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, amount, type, totalSpent);
+  int get hashCode =>
+      Object.hash(runtimeType, id, amount, type, currency, totalSpent);
 
   @override
   String toString() {
-    return 'BudgetModel(id: $id, amount: $amount, type: $type, totalSpent: $totalSpent)';
+    return 'BudgetModel(id: $id, amount: $amount, type: $type, currency: $currency, totalSpent: $totalSpent)';
   }
 }
 
@@ -392,7 +434,12 @@ abstract mixin class $BudgetModelCopyWith<$Res> {
           BudgetModel value, $Res Function(BudgetModel) _then) =
       _$BudgetModelCopyWithImpl;
   @useResult
-  $Res call({int id, double amount, BudgetType type, double totalSpent});
+  $Res call(
+      {int id,
+      double amount,
+      BudgetType type,
+      String currency,
+      double totalSpent});
 }
 
 /// @nodoc
@@ -410,6 +457,7 @@ class _$BudgetModelCopyWithImpl<$Res> implements $BudgetModelCopyWith<$Res> {
     Object? id = null,
     Object? amount = null,
     Object? type = null,
+    Object? currency = null,
     Object? totalSpent = null,
   }) {
     return _then(_self.copyWith(
@@ -425,6 +473,10 @@ class _$BudgetModelCopyWithImpl<$Res> implements $BudgetModelCopyWith<$Res> {
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as BudgetType,
+      currency: null == currency
+          ? _self.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
       totalSpent: null == totalSpent
           ? _self.totalSpent
           : totalSpent // ignore: cast_nullable_to_non_nullable
@@ -440,6 +492,7 @@ class _BudgetModel implements BudgetModel {
       {required this.id,
       required this.amount,
       required this.type,
+      required this.currency,
       this.totalSpent = 0});
   factory _BudgetModel.fromJson(Map<String, dynamic> json) =>
       _$BudgetModelFromJson(json);
@@ -450,6 +503,8 @@ class _BudgetModel implements BudgetModel {
   final double amount;
   @override
   final BudgetType type;
+  @override
+  final String currency;
   @override
   @JsonKey()
   final double totalSpent;
@@ -477,17 +532,20 @@ class _BudgetModel implements BudgetModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
             (identical(other.totalSpent, totalSpent) ||
                 other.totalSpent == totalSpent));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, amount, type, totalSpent);
+  int get hashCode =>
+      Object.hash(runtimeType, id, amount, type, currency, totalSpent);
 
   @override
   String toString() {
-    return 'BudgetModel(id: $id, amount: $amount, type: $type, totalSpent: $totalSpent)';
+    return 'BudgetModel(id: $id, amount: $amount, type: $type, currency: $currency, totalSpent: $totalSpent)';
   }
 }
 
@@ -499,7 +557,12 @@ abstract mixin class _$BudgetModelCopyWith<$Res>
       __$BudgetModelCopyWithImpl;
   @override
   @useResult
-  $Res call({int id, double amount, BudgetType type, double totalSpent});
+  $Res call(
+      {int id,
+      double amount,
+      BudgetType type,
+      String currency,
+      double totalSpent});
 }
 
 /// @nodoc
@@ -517,6 +580,7 @@ class __$BudgetModelCopyWithImpl<$Res> implements _$BudgetModelCopyWith<$Res> {
     Object? id = null,
     Object? amount = null,
     Object? type = null,
+    Object? currency = null,
     Object? totalSpent = null,
   }) {
     return _then(_BudgetModel(
@@ -532,6 +596,10 @@ class __$BudgetModelCopyWithImpl<$Res> implements _$BudgetModelCopyWith<$Res> {
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as BudgetType,
+      currency: null == currency
+          ? _self.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
       totalSpent: null == totalSpent
           ? _self.totalSpent
           : totalSpent // ignore: cast_nullable_to_non_nullable
