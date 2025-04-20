@@ -50,7 +50,11 @@ class BudgetDashboard extends StatelessWidget {
   void _onEditTap(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const CreateBudgetPage()),
+      MaterialPageRoute(
+        builder: (context) => CreateBudgetPage(
+          currentBudget: budget,
+        ),
+      ),
     );
   }
 

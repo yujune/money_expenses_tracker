@@ -34,7 +34,7 @@ class BudgetLocalSource {
     );
   }
 
-  Future<void> updateBudget(BudgetModel budget) async {
+  Future<void> updateBudget(UpdateBudgetModel budget) async {
     await db.update(
       BudgetLocalDbTable().tableName,
       budget.toJson(),

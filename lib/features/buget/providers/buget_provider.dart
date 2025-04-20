@@ -16,8 +16,14 @@ class Budget extends _$Budget {
   }
 
   Future<void> createBudget(CreateBudgetModel budget) async {
-    final budgetRepository = ref.watch(budgetRepositoryProvider);
+    final budgetRepository = ref.read(budgetRepositoryProvider);
     await budgetRepository.createBudget(budget);
+    ref.invalidateSelf();
+  }
+
+  Future<void> updateBudget(UpdateBudgetModel budget) async {
+    final budgetRepository = ref.read(budgetRepositoryProvider);
+    await budgetRepository.updateBudget(budget);
     ref.invalidateSelf();
   }
 }

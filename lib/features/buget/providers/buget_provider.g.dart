@@ -6,7 +6,7 @@ part of 'buget_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$budgetHash() => r'c875308a22c9c27aa6d8e49547694115c30227ff';
+String _$budgetHash() => r'506bb46b132862d594ab88ef139e40fd79a0a4d1';
 
 /// See also [Budget].
 @ProviderFor(Budget)

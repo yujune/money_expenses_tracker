@@ -173,6 +173,181 @@ class __$CreateBudgetModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
+mixin _$UpdateBudgetModel {
+  int get id;
+  double get amount;
+  BudgetType get type;
+
+  /// Create a copy of UpdateBudgetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $UpdateBudgetModelCopyWith<UpdateBudgetModel> get copyWith =>
+      _$UpdateBudgetModelCopyWithImpl<UpdateBudgetModel>(
+          this as UpdateBudgetModel, _$identity);
+
+  /// Serializes this UpdateBudgetModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is UpdateBudgetModel &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, amount, type);
+
+  @override
+  String toString() {
+    return 'UpdateBudgetModel(id: $id, amount: $amount, type: $type)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $UpdateBudgetModelCopyWith<$Res> {
+  factory $UpdateBudgetModelCopyWith(
+          UpdateBudgetModel value, $Res Function(UpdateBudgetModel) _then) =
+      _$UpdateBudgetModelCopyWithImpl;
+  @useResult
+  $Res call({int id, double amount, BudgetType type});
+}
+
+/// @nodoc
+class _$UpdateBudgetModelCopyWithImpl<$Res>
+    implements $UpdateBudgetModelCopyWith<$Res> {
+  _$UpdateBudgetModelCopyWithImpl(this._self, this._then);
+
+  final UpdateBudgetModel _self;
+  final $Res Function(UpdateBudgetModel) _then;
+
+  /// Create a copy of UpdateBudgetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? amount = null,
+    Object? type = null,
+  }) {
+    return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      amount: null == amount
+          ? _self.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as BudgetType,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _UpdateBudgetModel implements UpdateBudgetModel {
+  const _UpdateBudgetModel(
+      {required this.id, required this.amount, required this.type});
+  factory _UpdateBudgetModel.fromJson(Map<String, dynamic> json) =>
+      _$UpdateBudgetModelFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final double amount;
+  @override
+  final BudgetType type;
+
+  /// Create a copy of UpdateBudgetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$UpdateBudgetModelCopyWith<_UpdateBudgetModel> get copyWith =>
+      __$UpdateBudgetModelCopyWithImpl<_UpdateBudgetModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$UpdateBudgetModelToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _UpdateBudgetModel &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, amount, type);
+
+  @override
+  String toString() {
+    return 'UpdateBudgetModel(id: $id, amount: $amount, type: $type)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$UpdateBudgetModelCopyWith<$Res>
+    implements $UpdateBudgetModelCopyWith<$Res> {
+  factory _$UpdateBudgetModelCopyWith(
+          _UpdateBudgetModel value, $Res Function(_UpdateBudgetModel) _then) =
+      __$UpdateBudgetModelCopyWithImpl;
+  @override
+  @useResult
+  $Res call({int id, double amount, BudgetType type});
+}
+
+/// @nodoc
+class __$UpdateBudgetModelCopyWithImpl<$Res>
+    implements _$UpdateBudgetModelCopyWith<$Res> {
+  __$UpdateBudgetModelCopyWithImpl(this._self, this._then);
+
+  final _UpdateBudgetModel _self;
+  final $Res Function(_UpdateBudgetModel) _then;
+
+  /// Create a copy of UpdateBudgetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? amount = null,
+    Object? type = null,
+  }) {
+    return _then(_UpdateBudgetModel(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      amount: null == amount
+          ? _self.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as BudgetType,
+    ));
+  }
+}
+
+/// @nodoc
 mixin _$BudgetModel {
   int get id;
   double get amount;

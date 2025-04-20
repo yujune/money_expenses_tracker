@@ -7,7 +7,14 @@ import 'package:money_expenses_tracker/data/repository/currency/currency_reposit
 import 'package:money_expenses_tracker/features/expense/pages/create_expense_page.dart';
 
 class CurrencyTextField extends ConsumerWidget {
-  const CurrencyTextField({super.key});
+  const CurrencyTextField({
+    super.key,
+    required this.amountFieldName,
+    this.initialAmount,
+  });
+
+  final String amountFieldName;
+  final String? initialAmount;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -59,7 +66,8 @@ class CurrencyTextField extends ConsumerWidget {
         ),
         Expanded(
           child: FormBuilderTextField(
-            name: CreateExpenseFormField.amount.name,
+            name: amountFieldName,
+            initialValue: initialAmount,
             decoration: const InputDecoration(labelText: 'Amount'),
             keyboardType: const TextInputType.numberWithOptions(
               decimal: true,

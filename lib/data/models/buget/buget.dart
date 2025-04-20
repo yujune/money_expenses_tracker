@@ -25,6 +25,18 @@ abstract class CreateBudgetModel with _$CreateBudgetModel {
 }
 
 @freezed
+abstract class UpdateBudgetModel with _$UpdateBudgetModel {
+  const factory UpdateBudgetModel({
+    required int id,
+    required double amount,
+    required BudgetType type,
+  }) = _UpdateBudgetModel;
+
+  factory UpdateBudgetModel.fromJson(Map<String, dynamic> json) =>
+      _$UpdateBudgetModelFromJson(json);
+}
+
+@freezed
 abstract class BudgetModel with _$BudgetModel {
   const factory BudgetModel({
     required int id,

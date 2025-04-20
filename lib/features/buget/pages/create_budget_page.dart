@@ -14,7 +14,12 @@ enum CreateBudgetFormField {
 }
 
 class CreateBudgetPage extends HookConsumerWidget {
-  const CreateBudgetPage({super.key});
+  const CreateBudgetPage({
+    super.key,
+    this.currentBudget,
+  });
+
+  final BudgetModel? currentBudget;
 
   void _onSubmit({
     required BuildContext context,
@@ -48,9 +53,44 @@ class CreateBudgetPage extends HookConsumerWidget {
     }
   }
 
+  void _onUpdate({
+    required BuildContext context,
+    required WidgetRef ref,
+    required GlobalKey<FormBuilderState> formKey,
+  }) async {
+    if (formKey.currentState?.saveAndValidate() != true) {
+      return;
+    }
+
+    try {
+      CommonLoading().showLoading(context, message: 'Updating budget');
+
+      final amount = formKey
+          .currentState?.fields[CreateBudgetFormField.amount.name]?.value;
+      final currency = formKey
+          .currentState?.fields[CreateBudgetFormField.currency.name]?.value;
+
+      final newBudget = UpdateBudgetModel(
+        id: currentBudget!.id,
+        amount: double.parse(amount),
+        type: currentBudget!.type,
+      );
+
+      await ref.read(budgetProvider.notifier).updateBudget(newBudget);
+
+      if (context.mounted) CommonLoading().stopLoading(context);
+
+      if (context.mounted) Navigator.of(context).pop();
+    } catch (error) {
+      if (context.mounted) CommonLoading().stopLoading(context);
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final formKey = useMemoized(() => GlobalKey<FormBuilderState>());
+
+    final isUpdate = currentBudget != null;
 
     return Scaffold(
       appBar: AppBar(
@@ -65,23 +105,40 @@ class CreateBudgetPage extends HookConsumerWidget {
               padding: const EdgeInsets.all(16),
               child: FormBuilder(
                 key: formKey,
+                initialValue: isUpdate
+                    ? {
+                        CreateBudgetFormField.amount.name:
+                            currentBudget!.amount.toString(),
+                      }
+                    : {},
                 child: Column(
                   spacing: 16,
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const CurrencyTextField(),
+                    CurrencyTextField(
+                      amountFieldName: CreateBudgetFormField.amount.name,
+                      initialAmount: currentBudget?.amount.toString(),
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       child: FilledButton(
                         onPressed: () {
-                          _onSubmit(
-                            context: context,
-                            ref: ref,
-                            formKey: formKey,
-                          );
+                          isUpdate
+                              ? _onUpdate(
+                                  context: context,
+                                  ref: ref,
+                                  formKey: formKey,
+                                )
+                              : _onSubmit(
+                                  context: context,
+                                  ref: ref,
+                                  formKey: formKey,
+                                );
                         },
-                        child: const Text('Create'),
+                        child: Text(
+                          isUpdate ? 'Update' : 'Create',
+                        ),
                       ),
                     )
                   ],

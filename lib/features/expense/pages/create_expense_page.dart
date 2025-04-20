@@ -83,7 +83,9 @@ class CreateExpensePage extends HookConsumerWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const CurrencyTextField(),
+                    CurrencyTextField(
+                      amountFieldName: CreateExpenseFormField.amount.name,
+                    ),
                     FormBuilderDateTimePicker(
                       name: CreateExpenseFormField.date.name,
                       decoration: const InputDecoration(labelText: 'Date'),
