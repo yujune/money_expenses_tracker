@@ -1,9 +1,14 @@
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:money_expenses_tracker/common/extensions/context.dart';
 import 'package:money_expenses_tracker/data/repository/currency/currency_repository.dart';
+
+final amountNumberFormatter =
+    NumberFormat.decimalPatternDigits(decimalDigits: 2);
 
 class CurrencyTextField extends ConsumerWidget {
   const CurrencyTextField({
@@ -76,13 +81,22 @@ class CurrencyTextField extends ConsumerWidget {
             keyboardType: const TextInputType.numberWithOptions(
               decimal: true,
             ),
-            validator: FormBuilderValidators.compose(
-              [
-                FormBuilderValidators.required(),
-                FormBuilderValidators.min(0),
-                FormBuilderValidators.numeric(),
-              ],
-            ),
+            inputFormatters: [
+              CurrencyTextInputFormatter(
+                amountNumberFormatter,
+              ),
+            ],
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.required(),
+              (value) {
+                if (value == null) return null;
+                final numericValue = amountNumberFormatter.tryParse(value);
+                if (numericValue == null) {
+                  return 'Please enter a valid number';
+                }
+                return null;
+              },
+            ]),
           ),
         ),
       ],

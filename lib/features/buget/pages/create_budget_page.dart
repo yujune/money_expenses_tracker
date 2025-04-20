@@ -39,7 +39,7 @@ class CreateBudgetPage extends HookConsumerWidget {
           .currentState?.fields[CreateBudgetFormField.currency.name]?.value;
 
       final budget = CreateBudgetModel(
-        amount: double.parse(amount),
+        amount: amountNumberFormatter.parse(amount as String).toDouble(),
         type: BudgetType.monthly,
         currency: currency,
       );
@@ -73,7 +73,7 @@ class CreateBudgetPage extends HookConsumerWidget {
 
       final newBudget = UpdateBudgetModel(
         id: currentBudget!.id,
-        amount: double.parse(amount),
+        amount: amountNumberFormatter.parse(amount as String).toDouble(),
         type: currentBudget!.type,
         currency: currency,
       );

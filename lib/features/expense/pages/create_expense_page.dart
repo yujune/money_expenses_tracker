@@ -47,7 +47,7 @@ class CreateExpensePage extends HookConsumerWidget {
         .currentState?.fields[CreateExpenseFormField.currency.name]?.value;
 
     final expense = CreateExpenseModel(
-      amount: double.parse(amount),
+      amount: amountNumberFormatter.parse(amount as String).toDouble(),
       notes: notes,
       category: category,
       currency: currency,
@@ -88,7 +88,7 @@ class CreateExpensePage extends HookConsumerWidget {
         .currentState?.fields[CreateExpenseFormField.currency.name]?.value;
 
     final expense = currentExpense!.copyWith(
-      amount: double.parse(amount),
+      amount: amountNumberFormatter.parse(amount as String).toDouble(),
       notes: notes,
       category: category,
       currency: currency,
