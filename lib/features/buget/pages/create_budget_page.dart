@@ -86,6 +86,23 @@ class CreateBudgetPage extends HookConsumerWidget {
     }
   }
 
+  void _onDelete({
+    required BuildContext context,
+    required WidgetRef ref,
+  }) async {
+    try {
+      CommonLoading().showLoading(context, message: 'Deleting budget');
+
+      await ref.read(budgetProvider.notifier).deleteBudget(currentBudget!.id);
+
+      if (context.mounted) CommonLoading().stopLoading(context);
+
+      if (context.mounted) Navigator.of(context).pop();
+    } catch (error) {
+      if (context.mounted) CommonLoading().stopLoading(context);
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final formKey = useMemoized(() => GlobalKey<FormBuilderState>());
@@ -95,6 +112,13 @@ class CreateBudgetPage extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Budget'),
+        actions: [
+          if (isUpdate)
+            IconButton(
+              onPressed: () => _onDelete(context: context, ref: ref),
+              icon: const Icon(Icons.delete),
+            ),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(

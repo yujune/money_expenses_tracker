@@ -10,6 +10,8 @@ class DataStateBuilder extends StatelessWidget {
     this.description,
     this.titleColor,
     this.textColor,
+    this.buttonColor,
+    this.buttonTextColor,
     this.margin,
     this.buttonTitle,
     this.onButtonTap,
@@ -22,6 +24,8 @@ class DataStateBuilder extends StatelessWidget {
     this.description,
     this.titleColor,
     this.textColor,
+    this.buttonColor,
+    this.buttonTextColor,
     this.margin,
     this.buttonTitle,
     this.onButtonTap,
@@ -34,6 +38,8 @@ class DataStateBuilder extends StatelessWidget {
     this.description,
     this.titleColor,
     this.textColor,
+    this.buttonColor,
+    this.buttonTextColor,
     this.margin,
     this.buttonTitle,
     this.onButtonTap,
@@ -46,6 +52,8 @@ class DataStateBuilder extends StatelessWidget {
     this.description,
     this.titleColor,
     this.textColor,
+    this.buttonColor,
+    this.buttonTextColor,
     this.margin,
     this.buttonTitle,
     this.onButtonTap,
@@ -56,6 +64,8 @@ class DataStateBuilder extends StatelessWidget {
   final String? description;
   final Color? titleColor;
   final Color? textColor;
+  final Color? buttonColor;
+  final Color? buttonTextColor;
   final EdgeInsets? margin;
   final String? buttonTitle;
   final VoidCallback? onButtonTap;
@@ -89,12 +99,14 @@ class DataStateBuilder extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: FilledButton(
-                  style: context.smallFilledButtonStyle,
+                  style: FilledButton.styleFrom(
+                    backgroundColor: buttonColor,
+                  ),
                   onPressed: onButtonTap,
                   child: Text(
                     buttonTitle ?? 'Try again',
                     style: context.textTheme.bodyLarge?.copyWith(
-                      color: Colors.white,
+                      color: buttonTextColor ?? Colors.white,
                     ),
                   ),
                 ),

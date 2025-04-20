@@ -26,4 +26,10 @@ class Budget extends _$Budget {
     await budgetRepository.updateBudget(budget);
     ref.invalidateSelf();
   }
+
+  Future<void> deleteBudget(int id) async {
+    final budgetRepository = ref.read(budgetRepositoryProvider);
+    await budgetRepository.deleteBudget(id);
+    ref.invalidateSelf();
+  }
 }

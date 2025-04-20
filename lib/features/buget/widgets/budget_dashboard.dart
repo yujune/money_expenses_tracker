@@ -70,7 +70,13 @@ class BudgetDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     if (budget == null) {
       return Card(
+        margin: const EdgeInsets.all(8),
+        color: context.theme.colorScheme.primary,
         child: DataStateBuilder.empty(
+          titleColor: Colors.white,
+          textColor: Colors.white,
+          buttonColor: context.theme.colorScheme.secondaryContainer,
+          buttonTextColor: Colors.black,
           title: 'No budget',
           description: 'Create a budget to keep track of your expenses',
           buttonTitle: 'Start',
