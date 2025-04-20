@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:money_expenses_tracker/features/buget/widgets/budget_dashboard.dart';
 import 'package:money_expenses_tracker/features/expense/pages/create_expense_page.dart';
+import 'package:money_expenses_tracker/features/home/widgets/categorised_expenses_pie_chart.dart';
 import 'package:money_expenses_tracker/features/home/widgets/home_expenses_list.dart';
 
 class HomePage extends StatelessWidget {
@@ -25,6 +26,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             BudgetDashboardBuilder(),
+            CategorisedExpensesPieChartBuilder(),
             HomeExpensesListBuilder(),
           ],
         ),

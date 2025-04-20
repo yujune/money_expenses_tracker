@@ -1,6 +1,7 @@
 import 'package:money_expenses_tracker/data/models/expense/expense.dart';
 import 'package:money_expenses_tracker/data/repository/expense/expense_repository.dart';
 import 'package:money_expenses_tracker/features/buget/providers/buget_provider.dart';
+import 'package:money_expenses_tracker/features/home/providers/pie_chart_data_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'recent_expenses_provider.g.dart';
@@ -24,6 +25,8 @@ class RecentExpenses extends _$RecentExpenses {
     ref.invalidateSelf();
 
     ref.invalidate(budgetProvider);
+
+    ref.invalidate(totalExpensesByCategoryProvider);
   }
 
   Future<void> deleteExpense(int id) async {
@@ -34,6 +37,8 @@ class RecentExpenses extends _$RecentExpenses {
     ref.invalidateSelf();
 
     ref.invalidate(budgetProvider);
+
+    ref.invalidate(totalExpensesByCategoryProvider);
   }
 
   Future<void> updateExpense(ExpenseModel expense) async {
@@ -44,5 +49,7 @@ class RecentExpenses extends _$RecentExpenses {
     ref.invalidateSelf();
 
     ref.invalidate(budgetProvider);
+
+    ref.invalidate(totalExpensesByCategoryProvider);
   }
 }
