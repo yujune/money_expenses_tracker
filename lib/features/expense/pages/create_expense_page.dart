@@ -136,15 +136,16 @@ class CreateExpensePage extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(isUpdate ? 'Update Expense' : 'Create Expense'),
         actions: [
-          IconButton(
-            onPressed: () {
-              _onDelete(
-                context: context,
-                ref: ref,
-              );
-            },
-            icon: const Icon(Icons.delete),
-          ),
+          if (isUpdate)
+            IconButton(
+              onPressed: () {
+                _onDelete(
+                  context: context,
+                  ref: ref,
+                );
+              },
+              icon: const Icon(Icons.delete),
+            ),
         ],
       ),
       body: SafeArea(
