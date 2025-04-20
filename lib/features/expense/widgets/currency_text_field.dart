@@ -31,7 +31,7 @@ class CurrencyTextField extends ConsumerWidget {
           width: 100,
           child: FormBuilderDropdown(
             name: currencyFieldName,
-            initialValue: initialCurrency,
+            initialValue: initialCurrency ?? Currency.MYR.name,
             alignment: Alignment.center,
             isDense: true,
             dropdownColor: context.theme.cardColor,
