@@ -5,7 +5,7 @@ import 'package:money_expenses_tracker/common/extensions/context.dart';
 import 'package:money_expenses_tracker/common/widgets/data_state_builder.dart';
 import 'package:money_expenses_tracker/data/models/buget/buget.dart';
 import 'package:money_expenses_tracker/features/buget/pages/create_budget_page.dart';
-import 'package:money_expenses_tracker/features/buget/providers/buget_provider.dart';
+import 'package:money_expenses_tracker/features/buget/providers/budget_provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class BudgetDashboardBuilder extends ConsumerWidget {

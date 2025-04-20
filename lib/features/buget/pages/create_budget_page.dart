@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:money_expenses_tracker/common/extensions/context.dart';
 import 'package:money_expenses_tracker/common/widgets/common_progress_indicators.dart';
 import 'package:money_expenses_tracker/data/models/buget/buget.dart';
-import 'package:money_expenses_tracker/features/buget/providers/buget_provider.dart';
+import 'package:money_expenses_tracker/features/buget/providers/budget_provider.dart';
 import 'package:money_expenses_tracker/features/expense/widgets/currency_text_field.dart';
 
 enum CreateBudgetFormField {

@@ -1,6 +1,6 @@
 import 'package:money_expenses_tracker/data/models/expense/expense.dart';
 import 'package:money_expenses_tracker/data/repository/expense/expense_repository.dart';
-import 'package:money_expenses_tracker/features/buget/providers/buget_provider.dart';
+import 'package:money_expenses_tracker/features/buget/providers/budget_provider.dart';
 import 'package:money_expenses_tracker/features/expense/providers/expenses_provider.dart';
 import 'package:money_expenses_tracker/features/home/providers/pie_chart_data_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

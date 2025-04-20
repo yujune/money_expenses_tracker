@@ -2,7 +2,7 @@ import 'package:money_expenses_tracker/data/models/buget/buget.dart';
 import 'package:money_expenses_tracker/data/repository/budget/budget_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'buget_provider.g.dart';
+part 'budget_provider.g.dart';
 
 @riverpod
 class Budget extends _$Budget {
