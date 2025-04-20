@@ -8,7 +8,12 @@ import 'package:money_expenses_tracker/features/expense/providers/categories_pro
 import 'package:skeletonizer/skeletonizer.dart';
 
 class CategoryDropDownBuilder extends ConsumerWidget {
-  const CategoryDropDownBuilder({super.key});
+  const CategoryDropDownBuilder({
+    super.key,
+    this.initialValue,
+  });
+
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -16,6 +21,7 @@ class CategoryDropDownBuilder extends ConsumerWidget {
 
     return categoriesAsyncValue.when(
       data: (categories) => CategoryDropDownFormField(
+        initialValue: initialValue,
         categories: categories,
       ),
       error: (error, stack) => Text(error.toString()),
@@ -30,9 +36,14 @@ class CategoryDropDownBuilder extends ConsumerWidget {
 }
 
 class CategoryDropDownFormField extends StatelessWidget {
-  const CategoryDropDownFormField({super.key, required this.categories});
+  const CategoryDropDownFormField({
+    super.key,
+    required this.categories,
+    this.initialValue,
+  });
 
   final List<CategoryModel> categories;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +56,7 @@ class CategoryDropDownFormField extends StatelessWidget {
     return FormBuilderDropdown(
       name: CreateExpenseFormField.category.name,
       decoration: const InputDecoration(labelText: 'Category'),
-      initialValue: categories.first.name,
+      initialValue: initialValue,
       items: categories
           .map(
             (e) => DropdownMenuItem(

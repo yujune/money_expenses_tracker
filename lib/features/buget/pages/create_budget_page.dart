@@ -117,6 +117,7 @@ class CreateBudgetPage extends HookConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     CurrencyTextField(
+                      currencyFieldName: CreateBudgetFormField.currency.name,
                       amountFieldName: CreateBudgetFormField.amount.name,
                       initialAmount: currentBudget?.amount.toString(),
                     ),

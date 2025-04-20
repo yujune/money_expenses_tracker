@@ -4,14 +4,18 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:money_expenses_tracker/common/extensions/context.dart';
 import 'package:money_expenses_tracker/data/repository/currency/currency_repository.dart';
-import 'package:money_expenses_tracker/features/expense/pages/create_expense_page.dart';
 
 class CurrencyTextField extends ConsumerWidget {
   const CurrencyTextField({
     super.key,
     required this.amountFieldName,
     this.initialAmount,
+    required this.currencyFieldName,
+    this.initialCurrency,
   });
+
+  final String currencyFieldName;
+  final String? initialCurrency;
 
   final String amountFieldName;
   final String? initialAmount;
@@ -26,8 +30,8 @@ class CurrencyTextField extends ConsumerWidget {
         SizedBox(
           width: 100,
           child: FormBuilderDropdown(
-            name: CreateExpenseFormField.currency.name,
-            initialValue: Currency.MYR.name,
+            name: currencyFieldName,
+            initialValue: initialCurrency,
             alignment: Alignment.center,
             isDense: true,
             dropdownColor: context.theme.cardColor,
