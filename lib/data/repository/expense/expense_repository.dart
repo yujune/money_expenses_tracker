@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:money_expenses_tracker/common/util/currency.dart';
 import 'package:money_expenses_tracker/data/local/db/expense/expense.dart';
 import 'package:money_expenses_tracker/data/models/expense/expense.dart';
 import 'package:money_expenses_tracker/data/repository/currency/currency_repository.dart';
@@ -90,18 +91,11 @@ class ExpenseRepository extends IExpenseRepository {
           return expense;
         }
 
-        //conver to usd first, then convert to target currency
-        //1. expense currency to usd
-        //2. usd to target currency.
-        final expenseCurrencyRateToUsd =
-            exchangeRateToUsd[expenseCurrency] ?? 1.0;
-
-        final amountInUsd = expense.amount * expenseCurrencyRateToUsd;
-
-        final targetCurrencyRateToUsd =
-            exchangeRateToUsd[targetCurrencyEnum] ?? 1.0;
-
-        final amountInNewCurrency = amountInUsd / targetCurrencyRateToUsd;
+        final amountInNewCurrency = convertAmountToTargetCurrency(
+          currentAmount: expense.amount,
+          currentCurrency: expenseCurrency,
+          targetCurrency: targetCurrencyEnum,
+        );
 
         return expense.copyWith(amount: amountInNewCurrency);
       },
